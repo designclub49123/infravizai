@@ -16,7 +16,9 @@ import {
   Users,
   GitBranch,
   Cpu,
-  AlertTriangle
+  AlertTriangle,
+  BarChart3,
+  Building
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -32,6 +34,7 @@ const navItems = [
   { path: '/monitoring', icon: Heart, label: 'Health Monitor' },
   { path: '/security', icon: Shield, label: 'Security' },
   { path: '/simulation', icon: Activity, label: 'Performance' },
+  { path: '/production', icon: BarChart3, label: 'Production' },
   { path: '/disaster', icon: AlertTriangle, label: 'Disaster Recovery' },
   { path: '/circuit', icon: Cpu, label: 'Circuit Design' },
   { path: '/cicd', icon: GitBranch, label: 'CI/CD' },

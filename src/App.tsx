@@ -12,7 +12,7 @@ import { Layout } from '@/components/layout/Layout';
 import '@/styles/theme.css';
 
 // Lazy load pages
-const HomePage = lazy(() => import('@/pages/HomePage'));
+const HomePage = lazy(() => import('@/pages/HomePageEnhanced'));
 const DiagramPage = lazy(() => import('@/pages/DiagramPage'));
 const CodePage = lazy(() => import('@/pages/CodePage'));
 const SecurityPage = lazy(() => import('@/pages/SecurityPageFixed'));
