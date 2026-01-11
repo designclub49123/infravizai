@@ -74,7 +74,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useEnhancedInfrastructure } from '@/contexts/EnhancedInfrastructureContext';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -178,8 +177,6 @@ export function ProductionDashboard() {
       // Simulate WebSocket connection
       const connectWebSocket = () => {
         try {
-          // In production, this would be a real WebSocket endpoint
-          // ws://localhost:8080/ws or wss://your-production-domain.com/ws
           console.log('Connecting to real-time monitoring...');
           
           // Simulate real-time data updates
