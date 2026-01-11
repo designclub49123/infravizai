@@ -26,6 +26,7 @@ const CostPage = lazy(() => import('@/pages/CostPage'));
 const MonitoringPage = lazy(() => import('@/pages/MonitoringPage'));
 const DisasterPage = lazy(() => import('@/pages/DisasterPage'));
 const SimulationPage = lazy(() => import('@/pages/SimulationPage'));
+const ProductionPage = lazy(() => import('@/pages/ProductionPage'));
 const TestPage = lazy(() => import('@/pages/TestPage'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 
@@ -65,6 +66,7 @@ const App = () => (
                     <Route path="monitoring" element={<Suspense fallback={<PageLoader />}><MonitoringPage /></Suspense>} />
                     <Route path="disaster" element={<Suspense fallback={<PageLoader />}><DisasterPage /></Suspense>} />
                     <Route path="simulation" element={<Suspense fallback={<PageLoader />}><SimulationPage /></Suspense>} />
+                    <Route path="production" element={<Suspense fallback={<PageLoader />}><ProductionPage /></Suspense>} />
                     <Route path="test" element={<Suspense fallback={<PageLoader />}><TestPage /></Suspense>} />
                     <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
                   </Route>
