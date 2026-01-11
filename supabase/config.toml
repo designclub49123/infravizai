@@ -1,0 +1,4 @@
+project_id = "utreblazsfcpotfuttyo"
+
+[functions.generate-infrastructure]
+verify_jwt = false

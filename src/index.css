@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* InfraVizAI Design System - All colors in HSL */
+
+@layer base {
+  :root {
+    /* Core brand colors */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Orange primary - #FF6B00 */
+    --primary: 25 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success / Warning / Info */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 25 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 14% 98%;
+    --sidebar-foreground: 220 10% 26%;
+    --sidebar-primary: 25 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 10% 26%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 25 100% 50%;
+
+    /* AWS Resource Colors */
+    --aws-compute: 33 100% 50%;
+    --aws-storage: 142 76% 36%;
+    --aws-networking: 199 89% 48%;
+    --aws-security: 0 84% 60%;
+    --aws-database: 270 60% 55%;
+
+    /* Diagram canvas */
+    --canvas-bg: 220 14% 98%;
+    --canvas-grid: 220 13% 91%;
+    --node-border: 220 13% 85%;
+    --edge-color: 220 10% 60%;
+  }
+
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Orange primary in dark mode */
+    --primary: 25 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 6% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 6% 14%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 6% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success / Warning / Info */
+    --success: 142 76% 42%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 199 89% 55%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 240 6% 18%;
+    --input: 240 6% 18%;
+    --ring: 25 100% 55%;
+
+    /* Sidebar */
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 240 5% 90%;
+    --sidebar-primary: 25 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 14%;
+    --sidebar-accent-foreground: 240 5% 90%;
+    --sidebar-border: 240 6% 18%;
+    --sidebar-ring: 25 100% 55%;
+
+    /* AWS Resource Colors - brighter for dark mode */
+    --aws-compute: 33 100% 55%;
+    --aws-storage: 142 76% 45%;
+    --aws-networking: 199 89% 55%;
+    --aws-security: 0 84% 65%;
+    --aws-database: 270 60% 60%;
+
+    /* Diagram canvas */
+    --canvas-bg: 240 10% 6%;
+    --canvas-grid: 240 6% 14%;
+    --node-border: 240 6% 25%;
+    --edge-color: 240 5% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Safe area for mobile devices */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+}
+
+@layer components {
+  /* Glass effect for cards */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+  }
+
+  /* Glow effect for primary elements */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  /* Resource node styles */
+  .resource-node {
+    @apply rounded-lg border-2 bg-card shadow-md transition-all duration-200;
+  }
+
+  .resource-node:hover {
+    @apply shadow-lg scale-[1.02];
+  }
+
+  .resource-node.selected {
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Pulse animation for voice input */
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.95);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Skeleton loading */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Bottom nav styles for mobile */
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center gap-1 py-2 px-3 text-muted-foreground transition-colors;
+  }
+
+  .bottom-nav-item.active {
+    @apply text-primary;
+  }
+
+  .bottom-nav-item:hover {
+    @apply text-foreground;
+  }
+}
+
+/* React Flow custom styles */
+.react-flow__node {
+  @apply !bg-transparent;
+}
+
+.react-flow__edge-path {
+  stroke: hsl(var(--edge-color));
+  stroke-width: 2;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: hsl(var(--primary));
+  stroke-width: 3;
+}
+
+.react-flow__handle {
+  @apply !bg-muted-foreground !border-2 !border-background;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.react-flow__handle:hover {
+  @apply !bg-primary;
+}
+
+.react-flow__minimap {
+  @apply !bg-card !border !border-border rounded-lg overflow-hidden;
+}
+
+.react-flow__controls {
+  @apply !bg-card !border !border-border !rounded-lg !shadow-md overflow-hidden;
+}
+
+.react-flow__controls-button {
+  @apply !bg-card !border-b !border-border hover:!bg-accent;
+}
+
+.react-flow__controls-button svg {
+  @apply !fill-foreground;
+}
+
+/* Monaco Editor theme overrides */
+.monaco-editor {
+  @apply rounded-lg overflow-hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
